@@ -1,35 +1,31 @@
-import sys
-class Graph():
+def Display( dist):
+    print("\nvertex \tsource distance")
+    [print(f'{i}\t{dist[i]}') for i in range(v)]
 
-    def Display(self, dist):
-        print("\nvertex \tsource distance")
-        [print(f'{i}\t{dist[i]}') for i in range(self.v)]
+def minDistance( dist, sptSet):
+    min = float('inf')
+    for i in range(v):
+        if dist[i] < min and sptSet[i] == False:
+            min = dist[i]
+            mindex = i
+    return mindex
 
-    def minDistance(self, dist, sptSet):
-        min = float('inf')
-        for i in range(self.v):
-            if dist[i] < min and sptSet[i] == False:
-                min = dist[i]
-                mindex = i
-        return mindex
+def dijkstra( src):
+    dist = [float('inf')] * v
+    dist[src] = 0
+    sptSet = [False] * v
+    for _ in range(v):
+        x = minDistance(dist, sptSet)
+        sptSet[x] = True
+        for y in range(v):
+            if graph[x][y] > 0 and sptSet[y] == False and dist[y] > dist[x] + graph[x][y]:
+                dist[y] = dist[x] + graph[x][y]
+    Display(dist)
 
-    def dijkstra(self, src):
-        dist = [float('inf')] * self.v
-        dist[src] = 0
-        sptSet = [False] * self.v
-        for _ in range(self.v):
-            x = self.minDistance(dist, sptSet)
-            sptSet[x] = True
-            for y in range(self.v):
-                if self.graph[x][y] > 0 and sptSet[y] == False and dist[y] > dist[x] + self.graph[x][y]:
-                    dist[y] = dist[x] + self.graph[x][y]
-        self.Display(dist)
 
-g= Graph()
 v=int(input('enter number of vertices: '))
-g.v=v
-g.graph=[([eval(x) for x in input().split()]) for i in range(v)]
-g.dijkstra(int(input('give source: ')))
+graph=[([eval(x) for x in input().split()]) for i in range(v)]
+dijkstra(int(input('give source: ')))
 
 # imput:
 # 9
