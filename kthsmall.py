@@ -1,29 +1,28 @@
-def part(a, first, last):
-    left, right, middle, temp = first, last, a[first], 0
-    while left < right:
-        while a[left] <= middle:
-            left += 1
-        while a[right] > middle:
-            right -= 1
-        if left < right:
-            temp = a[left]
-            a[left] = a[right]
-            a[right] = temp
-    a[first] = a[right]
-    a[right] = middle
-    return right
+def merge_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    mid = len(arr) // 2
+    left, right = merge_sort(arr[:mid]), merge_sort(arr[mid:])
+    return merge(left, right, arr.copy())
 
-def small(a, start, end, k):
-    if start < end:
-        middle = part(a, start, end)
-        if middle == k-1:
-            return a[middle]
-        elif middle > k-1:
-            return small(a, start, middle, k)
+
+def merge(left, right, merged):
+    left_cursor, right_cursor = 0, 0
+    while left_cursor < len(left) and right_cursor < len(right):
+        if left[left_cursor] <= right[right_cursor]:
+            merged[left_cursor+right_cursor]=left[left_cursor]
+            left_cursor += 1
         else:
-            return small(a, middle+1, end, k)
+            merged[left_cursor + right_cursor] = right[right_cursor]
+            right_cursor += 1
+    for left_cursor in range(left_cursor, len(left)):
+        merged[left_cursor + right_cursor] = left[left_cursor]
+    for right_cursor in range(right_cursor, len(right)):
+        merged[left_cursor + right_cursor] = right[right_cursor]
+    return merged
 
-x = int(input('enter number of elements: '))
-y = [eval(x) for x in input('enter elements: ').split()]
-k = int(input('enter k: '))
-print(f'The {k} smallest element is {small(y,0,x-1,k)}')
+n=int(input('enter number of elements: '))
+l=[eval(x) for x in input('enter elements: ').split()]
+l=merge_sort(l)
+k=int(input('enter k: '))
+print(f'{k} smallest element is {l[k-1]}')
