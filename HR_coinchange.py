@@ -1,9 +1,9 @@
 n,m=[eval(x) for x in input().split()]
 c=[eval(x) for x in input().split()]
 dp = [1]+[0]*n
-for coin in c:
-    for i in range(coin, n+1):
-        dp[i] += dp[i-coin]
+for i in c:
+    for j in range(i, n+1):
+        dp[j] += dp[j-i]
 print(dp[n])
 
 # ip:
