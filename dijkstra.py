@@ -1,6 +1,5 @@
-def Display( dist):
-    print("\nvertex \tsource distance")
-    [print(f'{i}\t{dist[i]}') for i in range(v)]
+def Display( dist,src):
+    [print(f'{src} -> {i}: {dist[i]}') for i in range(v)]
 
 def minDistance( dist, sptSet):
     min = float('inf')
@@ -20,13 +19,12 @@ def dijkstra( src):
         for y in range(v):
             if graph[x][y] > 0 and sptSet[y] == False and dist[y] > dist[x] + graph[x][y]:
                 dist[y] = dist[x] + graph[x][y]
-    Display(dist)
+    Display(dist,src)
 
 
 v=int(input('enter number of vertices: '))
 graph=[([eval(x) for x in input().split()]) for i in range(v)]
 dijkstra(int(input('give source: ')))
-
 # imput:
 # 9
 # 0 4 0 0 0 0 0 8 0
@@ -41,17 +39,15 @@ dijkstra(int(input('give source: ')))
 # 3
 
 # output:
-# enter number of vertices: give source: 
-# vertex 	source distance
-# 0	        19
-# 1	        15
-# 2	        7
-# 3	        0
-# 4	        9
-# 5	        11
-# 6	        13
-# 7	        14
-# 8	        9
+# 3 -> 0: 19
+# 3 -> 1: 15
+# 3 -> 2: 7
+# 3 -> 3: 0
+# 3 -> 4: 9
+# 3 -> 5: 11
+# 3 -> 6: 13
+# 3 -> 7: 14
+# 3 -> 8: 9
 
 # ----------------------------------------------------------------------------------------------------
 # ip2:
@@ -68,14 +64,12 @@ dijkstra(int(input('give source: ')))
 # 0
 
 # op2:
-# enter number of vertices: give source: 
-# vertex 	source distance
-# 0	        0
-# 1	        4
-# 2	        12
-# 3	        19
-# 4	        21
-# 5	        11
-# 6	        9
-# 7	        8
-# 8	        14
+# 0 -> 0: 0
+# 0 -> 1: 4
+# 0 -> 2: 12
+# 0 -> 3: 19
+# 0 -> 4: 21
+# 0 -> 5: 11
+# 0 -> 6: 9
+# 0 -> 7: 8
+# 0 -> 8: 14
