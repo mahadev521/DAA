@@ -1,6 +1,3 @@
-def Display( dist,src):
-    [print(f'{src} -> {i}: {dist[i]}') for i in range(v)]
-
 def minDistance( dist, sptSet):
     min = float('inf')
     for i in range(v):
@@ -19,8 +16,7 @@ def dijkstra( src):
         for y in range(v):
             if graph[x][y] > 0 and sptSet[y] == False and dist[y] > dist[x] + graph[x][y]:
                 dist[y] = dist[x] + graph[x][y]
-    Display(dist,src)
-
+    [print(f'{src} -> {i}: {dist[i]}') for i in range(v)]
 
 v=int(input('enter number of vertices: '))
 graph=[([eval(x) for x in input().split()]) for i in range(v)]
