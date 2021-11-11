@@ -5,8 +5,7 @@ def Kruskal(V,mat):
         if mat[0][0] not in V[mat[0][1]-1] or mat[0][1] not in V[mat[0][0]-1]:
             V[mat[0][0]-1]=V[mat[0][0]-1] | V[mat[0][1]-1]
             V[mat[0][1]-1]=V[mat[0][0]-1]
-            for i in V[mat[0][0]-1]:
-                V[i-1]=V[mat[0][0]-1]
+            for i in V[mat[0][0]-1]: V[i-1]=V[mat[0][0]-1]
             mstsum+=mat[0][2]
         mat.pop(0)
     print(mstsum)
