@@ -14,4 +14,4 @@ def maxmin(a, x, y):
 x = int(input('enter number of elements: '))
 y = [eval(x) for x in input('enter elements ').split()]
 o = maxmin(y, 0, len(y)-1)
-print('The maximum and minimum elements in given numbers are: ', *o)
+print('The maximum and minimum elements in given elements are: ', *o)
