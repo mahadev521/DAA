@@ -2,19 +2,15 @@ def floyd(G):
     dist = list(map(lambda p: list(map(lambda q: q, p)), G))
     for r in range(ver):
         for p in range(ver):
-            for q in range(ver):
-                dist[p][q] = min(dist[p][q], dist[p][r] + dist[r][q])
-    for i in dist:
-        print(*i)
+            for q in range(ver): dist[p][q] = min(dist[p][q], dist[p][r] + dist[r][q])
+    [print(*i) for i in dist]
 
 ver = int(input('enter number of vertices: '))
 inf = float('inf')
-G=[([eval(x) for x in input().split()]) for i in range(ver)]
+G=[[eval(x) for x in input().split()] for i in range(ver)]
 for i in range(ver):
     for j in range(ver):
-        if G[i][j]==0 and i!=j:
-            G[i][j]=inf
-print('')
+        if G[i][j]==0 and i!=j: G[i][j]=inf
 floyd(G)
 
 # ip:
