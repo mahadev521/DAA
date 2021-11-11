@@ -4,7 +4,6 @@ def BFS(s):
     q.put(s)
     visited[s] = True
     dist[s] = 0
-
     while not q.empty():
         u = q.get()
         for v in graph[u]:
@@ -16,7 +15,6 @@ def BFS(s):
 
 for _ in range(int(input())):
     n, m = map(int, input().split())
-
     graph = [[] for i in range(n)]
     visited = [False]*n
     dist = [-1]*n
@@ -29,9 +27,8 @@ for _ in range(int(input())):
 
     BFS(s)
     for i in range(n):
-        if i == s:
-            continue
-        print(dist[i]*6 if dist[i] != -1 else '-1', end = ' ')
+        if i != s:
+            print(dist[i]*6 if dist[i] != -1 else '-1', end = ' ')
     print()
 
 # Input:
