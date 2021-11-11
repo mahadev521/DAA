@@ -19,8 +19,9 @@ def dijkstra( src):
     [print(f'{src} -> {i}: {dist[i]}') for i in range(v)]
 
 v=int(input('enter number of vertices: '))
-graph=[([eval(x) for x in input().split()]) for i in range(v)]
+graph=[[eval(x) for x in input().split()] for _ in range(v)]
 dijkstra(int(input('give source: ')))
+
 # imput:
 # 9
 # 0 4 0 0 0 0 0 8 0
