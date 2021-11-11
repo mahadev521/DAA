@@ -1,9 +1,9 @@
 n,k=map(int,input().split())
 l=sorted([eval(x) for x in input().split()],reverse=True)
-cost=prepur=0
+cost = prepur = 0
 for i in range(n):
-    cost += (prepur +1)*l[i]
-    prepur += 1 if (i+1)%k==0 else 0
+    cost += (prepur +1) * l[i]
+    if (i+1)%k==0: prepur += 1
 print(cost)
 
 # ip:
