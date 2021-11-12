@@ -1,3 +1,5 @@
+'''5. Find the non attacking positions of Queens in a given chess board using
+backtracking Technique.'''
 def safe(l, row, col):
     for i in range(col):
         if l[row][i]: return False
