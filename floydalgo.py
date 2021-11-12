@@ -1,18 +1,21 @@
-def printPath(path, v, u, route):
+'''4. Find Shortest path from any node to any other node (All pairs shortest path)
+within a graph.'''
+
+def paths(path, v, u, route):
     if path[v][u] == v: return
-    printPath(path, v, path[v][u], route)
+    paths(path, v, path[v][u], route)
     route.append(path[v][u])
 
-def printSolution(path, n):
+def display(path, n):
     for v in range(n):
         for u in range(n):
             if u != v and path[v][u] != -1:
                 route = [v]
-                printPath(path, v, u, route)
+                paths(path, v, u, route)
                 route.append(u)
                 print(f'shortest path from {v} to {u}: ', *route)
  
-def floydWarshall(G,n):
+def floyd(G,n):
     if not G: return
     cost = G.copy()
     path = [[None for x in range(n)] for y in range(n)]
@@ -27,7 +30,7 @@ def floydWarshall(G,n):
                 if cost[v][k] != float('inf') and cost[k][u] != float('inf') and (cost[v][k] + cost[k][u] < cost[v][u]):
                     cost[v][u] = cost[v][k] + cost[k][u]
                     path[v][u] = path[k][u]
-    printSolution(path, n)
+    display(path, n)
  
 ver = int(input('enter number of vertices of graph: '))
 inf = float('inf')
@@ -35,7 +38,7 @@ G=[[eval(x) for x in input().split()] for i in range(ver)]
 for i in range(ver):
     for j in range(ver):
         if G[i][j]==0 and i!=j: G[i][j]=inf
-floydWarshall(G,ver)
+floyd(G,ver)
 
 # ip:
 # 9
