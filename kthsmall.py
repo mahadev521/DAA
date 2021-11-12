@@ -1,29 +1,24 @@
 '''2. Find the kth smallest element using divide and conquer approach'''
-def merge_sort(arr):
-    if len(arr) <= 1:
-        return arr
-    mid = len(arr) // 2
-    l, r = merge_sort(arr[:mid]), merge_sort(arr[mid:])
-    return merge(l, r, arr.copy())
+def partition(a,l,h):
+    pivot = a[l]
+    i = l
+    j=h
+    while i<j:
+        while a[i]<=pivot and i<h: i+=1
+        while a[j]>pivot and j>l: j-=1
+        if i<j: a[i],a[j]=a[j],a[i]   
+    a[j],a[l]=a[l],a[j]
+    return j
 
-
-def merge(l, r, merged):
-    left, right = 0, 0
-    while left < len(l) and right < len(r):
-        if l[left] <= r[right]:
-            merged[left+right]=l[left]
-            left += 1
-        else:
-            merged[left + right] = r[right]
-            right += 1
-    for left in range(left, len(l)):
-        merged[left + right] = l[left]
-    for right in range(right, len(r)):
-        merged[left + right] = r[right]
-    return merged
+def quickSort(a,l,h):
+    if l < h:
+        pi = partition(a, l, h)
+        quickSort(a, l, pi - 1)
+        quickSort(a, pi + 1, h)
+        
 
 n=int(input('enter number of elements: '))
 l=[eval(x) for x in input('enter elements: ').split()]
-l=merge_sort(l)
+quickSort(l,0,n-1)
 k=int(input('enter k: '))
 print(f'{k} smallest element is {l[k-1]}')
