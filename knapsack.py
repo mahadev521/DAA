@@ -19,19 +19,18 @@ for i in range(n):
                 lb1+=val[j]
     up1=lb1
     lb1+=((val[j]/wt[j])*(W-w1))
-    if upper<lb1: 
-        continue
-    elif upper>up1:
-        knap[i]=0
-        upper=up1
-    elif lb1<lb:
-        knap[i]=0
-        lb=lb1
-    elif lb1==lb:
+    if upper>lb1: 
         if upper>up1:
             knap[i]=0
             upper=up1
+        elif lb1<lb:
+            knap[i]=0
             lb=lb1
+        elif lb1==lb:
+            if upper>up1:
+                knap[i]=0
+                upper=up1
+                lb=lb1
 print(-1*upper)
 
 # ip:
