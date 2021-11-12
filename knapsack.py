@@ -34,7 +34,6 @@ for i in range(n):
             up=upper=up1
             lb=lb1
 print(-1*upper)
-print(knap)
 
 # ip:
 # 4
