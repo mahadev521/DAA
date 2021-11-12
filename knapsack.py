@@ -12,16 +12,14 @@ for j in range(n):
 upper=up=lb
 lb+=((val[j]/wt[j])*(W-w))
 for i in range(n):
-    lb1=up1=0
-    w1=0
+    lb1=up1=w1=0
     for j in range(n):
         if i!=j and w1+wt[j]<=W and knap[j]==1:
                 w1+=wt[j]
                 lb1+=val[j]
     up1=lb1
     lb1+=((val[j]/wt[j])*(W-w1))
-    if upper<lb1: 
-        continue
+    if upper<lb1: continue
     elif lb1<lb:
         knap[i]=0
         lb=lb1
