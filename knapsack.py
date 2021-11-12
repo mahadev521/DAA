@@ -1,3 +1,4 @@
+'''6. Calculate the optimal profit of a Knapsack using Branch and Bound Technique. '''
 n=int(input('enter number of items: '))
 val=[-1*eval(x) for x in input('enter values/profits of items: ').split()]
 wt=[eval(x) for x in input('enter weights of items: ').split()]
