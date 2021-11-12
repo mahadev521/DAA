@@ -1,4 +1,3 @@
-from itertools import compress
 n=int(input('enter number of items: '))
 val=[-1*eval(x) for x in input('enter values/profits of items: ').split()]
 wt=[eval(x) for x in input('enter weights of items: ').split()]
@@ -12,14 +11,20 @@ for j in range(n):
 upper=up=lb
 lb+=((val[j]/wt[j])*(W-w))
 for i in range(n):
-    lb1=up1=w1=0
+    lb1=up1=0
+    w1=0
     for j in range(n):
         if i!=j and w1+wt[j]<=W and knap[j]==1:
                 w1+=wt[j]
                 lb1+=val[j]
     up1=lb1
     lb1+=((val[j]/wt[j])*(W-w1))
-    if upper<lb1: continue
+    print(up,lb,up1,lb1)
+    if upper<lb1: 
+        continue
+    elif upper>up1:
+        knap[i]=0
+        upper=up1
     elif lb1<lb:
         knap[i]=0
         lb=lb1
@@ -28,7 +33,8 @@ for i in range(n):
             knap[i]=0
             up=upper=up1
             lb=lb1
-print(-1*sum(compress(val,knap)))
+print(-1*upper)
+print(knap)
 
 # ip:
 # 4
@@ -37,3 +43,10 @@ print(-1*sum(compress(val,knap)))
 # op:
 # 38
 
+# ip2:
+# 3
+# 60 100 120
+# 10 20 30
+# 50
+# op2:
+# 220
