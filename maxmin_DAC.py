@@ -1,3 +1,5 @@
+'''1. Find the min-max of list of elements using divide and conquer strategy.'''
+
 def maxmin(a, x, y):
     maxi, mini = 0, 0
     d = e = f = [0, 0]
