@@ -37,10 +37,3 @@ print(-1*sum(compress(val,knap)))
 # op:
 # 38
 
-# ip2:
-# 4
-# 10 40 30 50
-# 5 4 6 8
-# 10
-# op2:
-# 90
