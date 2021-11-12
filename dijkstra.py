@@ -1,3 +1,5 @@
+'''3. Determine the path length from a source vertex to the other vertices in a given
+graph. (Dijkstra’s algorithm)'''
 def minDistance( dist, sptSet):
     min = float('inf')
     for i in range(v):
