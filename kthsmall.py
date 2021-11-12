@@ -1,3 +1,4 @@
+'''2. Find the kth smallest element using divide and conquer approach'''
 def merge_sort(arr):
     if len(arr) <= 1:
         return arr
