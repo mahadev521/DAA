@@ -1,8 +1,7 @@
 '''2. Find the kth smallest element using divide and conquer approach'''
 def partition(a,l,h):
     pivot = a[l]
-    i = l
-    j=h
+    i,j = l,h
     while i<j:
         while a[i]<=pivot and i<h: i+=1
         while a[j]>pivot and j>l: j-=1
@@ -15,7 +14,6 @@ def quickSort(a,l,h):
         pi = partition(a, l, h)
         quickSort(a, l, pi - 1)
         quickSort(a, pi + 1, h)
-        
 
 n=int(input('enter number of elements: '))
 l=[eval(x) for x in input('enter elements: ').split()]
