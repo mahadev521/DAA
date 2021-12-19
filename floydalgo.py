@@ -1,6 +1,38 @@
 '''4. Find Shortest path from any node to any other node (All pairs shortest path)
 within a graph.'''
 
+'''small program'''
+def floyd(G):
+    dist = list(map(lambda p: list(map(lambda q: q, p)), G))
+    for r in range(ver):
+        for p in range(ver):
+            for q in range(ver): 
+                dist[p][q] = min(dist[p][q], dist[p][r] + dist[r][q])
+    [print(*i) for i in dist]
+
+ver = 4
+G=[[0, 1, 1, 3],
+        [1, 0, 2, 0],
+        [1, 2, 0, 2],
+        [3, 0, 2, 0]
+        ]
+inf = float('inf')
+for i in range(ver):
+    for j in range(ver):
+        if G[i][j]==0 and i!=j: G[i][j]=inf
+floyd(G)
+# # o/p:
+# 0 1 1 3
+# 1 0 2 4
+# 1 2 0 2
+# 3 4 2 0
+
+
+
+
+
+
+'''with path'''
 def paths(path, v, u, route):
     if path[v][u] == v: return
     paths(path, v, path[v][u], route)
